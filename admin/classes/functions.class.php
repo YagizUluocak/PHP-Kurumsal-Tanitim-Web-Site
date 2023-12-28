@@ -2,7 +2,7 @@
 class Veri extends Db
 {
     private $tablo_ad;
-    private $tablolar = ['slider','test','hakkimizda'];
+    private $tablolar = ['slider','servis','hakkimizda'];
 
     private $id_alan_isim;
     private $tablo_id;
@@ -119,6 +119,82 @@ class Slider extends Db
             $params['slider_resim'] = $resimadi;
         }
 
+        return $stmt->execute($params); 
+    }
+}
+
+class Servis extends Db
+{
+    private $servis_id;
+    private $servis_ad;
+    private $servis_aciklama;
+    private $servis_durum;
+    private $servis_resim;
+
+
+    public function servisEkle()
+    {
+        $this->servis_ad = htmlspecialchars($_POST['servis_ad'], ENT_QUOTES);
+        $this->servis_aciklama = htmlspecialchars($_POST['servis_aciklama'], ENT_QUOTES);
+        $this->servis_resim = $_FILES["servis_resim"];
+        $this->servis_durum = htmlspecialchars($_POST['servis_durum'], ENT_QUOTES);
+
+        $dest_path = "../../images/servis/";
+        $this->servis_resim = $_FILES["servis_resim"]["name"];
+        $fileSourcePath = $_FILES["servis_resim"]["tmp_name"];
+        $fileDestPath = $dest_path . $this->servis_resim;
+        move_uploaded_file($fileSourcePath, $fileDestPath);
+
+        $query = "INSERT INTO servis(servis_ad, servis_aciklama, servis_durum, servis_resim) VALUES (:servis_ad, :servis_aciklama, :servis_durum, :servis_resim)";
+        $stmt = $this->connect()->prepare($query);
+
+        $stmt->bindParam(':servis_ad', $this->servis_ad);
+        $stmt->bindParam(':servis_aciklama', $this->servis_aciklama);
+        $stmt->bindParam(':servis_durum', $this->servis_durum);
+        $stmt->bindParam(':servis_resim', $this->servis_resim);
+
+        return $stmt->execute();
+    }
+
+    public function servisGuncelle()
+    {
+        $this->servis_id = $_GET['servis_id'];
+        $this->servis_ad = htmlspecialchars($_POST['servis_ad'], ENT_QUOTES);
+        $this->servis_aciklama = htmlspecialchars($_POST['servis_aciklama'], ENT_QUOTES);
+        $this->servis_durum = htmlspecialchars($_POST['servis_durum'], ENT_QUOTES);
+        $this->servis_resim = $_FILES["servis_resim"];
+
+        $resimadi = null;
+        if(isset($_FILES['servis_resim'])&& $_FILES['servis_resim']['error'] === UPLOAD_ERR_OK){
+
+            $resimadi = $_FILES['servis_resim']['name'];
+            $hedefKlasor = '../../images/servis/';
+            $hedefDosya = $hedefKlasor.$resimadi;
+
+            if(move_uploaded_file($_FILES['servis_resim']['tmp_name'], $hedefDosya)){
+                $resimadi = $resimadi;
+            }else{
+                echo "Resim Yükleme İşlemi Başarısız Oldu!";
+            }
+        }
+
+        $query = "UPDATE servis SET servis_ad=:servis_ad, servis_aciklama=:servis_aciklama, servis_durum=:servis_durum";
+
+        if($resimadi){
+            $query .=", servis_resim=:servis_resim";
+        }
+        $query .= " WHERE servis_id=:servis_id";
+        $stmt =$this->connect()->prepare($query);
+        $params = [
+            'servis_id'=> $this->servis_id,
+            'servis_ad' => $this->servis_ad,
+            'servis_aciklama' => $this->servis_aciklama,
+            'servis_durum' => $this->servis_durum
+        ];
+
+        if($resimadi){
+            $params['servis_resim'] = $resimadi;
+        }
         return $stmt->execute($params); 
     }
 }

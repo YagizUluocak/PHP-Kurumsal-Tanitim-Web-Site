@@ -8,7 +8,6 @@
     $Veri = new Veri();
     $VeriGetir = $Veri->veriGetir("slider");
 
-
     //VeriIdGetir
     if(isset($_GET[$id_alan_isim]))
     {
@@ -16,7 +15,6 @@
         $VeriId = new Veri();
         $veriIdGetir = $VeriId->veriIdGetir($tablo_Ad, $id_alan_isim, $tablo_id);
     }
-
 
     // EKLE / GÜNCELLE
     if(isset($_POST["submit"]))

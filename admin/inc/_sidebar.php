@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <a href="../pages/menu.php" class="nav-item nav-link"><i class="fa fa-handshake me-2"></i>Menüler</a>
-                    <a href="../pages/referans.php" class="nav-item nav-link"><i class="fa fa-handshake me-2"></i>Referanslar</a>
+                    <a href="../pages/servis.php" class="nav-item nav-link"><i class="fa fa-handshake me-2"></i>Servisler</a>
                     <a href="../pages/slider.php" class="nav-item nav-link"><i class="fa solid fa-sliders me-2"></i>Slider</a>
                     <a href="../pages/deneyim.php" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Deneyimlerim</a>
                     <a href="../pages/yetenek.php" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Yetenekler</a>
