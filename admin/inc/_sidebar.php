@@ -12,19 +12,20 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="../pages/index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Ana Sayfa</a>
+                    <a href="../pages/hakkimizda.php" class="nav-item nav-link"><i class="fa fa-handshake me-2"></i>Hakkımzda</a>
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-cog me-2"></i>Ayarlar</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="genel-ayar.php" class="dropdown-item">Genel Ayarlar</a>
-                            <a href="sosyal-medya.php" class="dropdown-item">Sosyal Medya Ayarları</a>
+                            <a href="ayar-genel.php" class="dropdown-item">Genel Ayarlar</a>
+                            <a href="ayar-sosyal.php" class="dropdown-item">Sosyal Medya Ayarları</a>
                         </div>
                     </div>
                     <a href="../pages/menu.php" class="nav-item nav-link"><i class="fa fa-handshake me-2"></i>Menüler</a>
                     <a href="../pages/servis.php" class="nav-item nav-link"><i class="fa fa-handshake me-2"></i>Servisler</a>
                     <a href="../pages/slider.php" class="nav-item nav-link"><i class="fa solid fa-sliders me-2"></i>Slider</a>
-                    <a href="../pages/deneyim.php" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Deneyimlerim</a>
-                    <a href="../pages/yetenek.php" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Yetenekler</a>
+                    <a href="../pages/takim.php" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Takım</a>
+                    <a href="../pages/nedenbiz.php" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Neden Biz</a>
                     <a href="../pages/text.php" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Text Alanlar</a>
                 </div>
             </nav>

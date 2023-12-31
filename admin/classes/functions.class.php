@@ -1,8 +1,9 @@
 <?php
+
 class Veri extends Db
 {
     private $tablo_ad;
-    private $tablolar = ['slider','servis','hakkimizda'];
+    private $tablolar = ['slider','servis','hakkimizda', 'nedenbiz', 'takim', 'ayar'];
 
     private $id_alan_isim;
     private $tablo_id;
@@ -122,7 +123,6 @@ class Slider extends Db
         return $stmt->execute($params); 
     }
 }
-
 class Servis extends Db
 {
     private $servis_id;
@@ -196,6 +196,314 @@ class Servis extends Db
             $params['servis_resim'] = $resimadi;
         }
         return $stmt->execute($params); 
+    }
+}
+class Hakkimizda extends Db
+{
+    private $hakkimizda_id; 
+    private $hakkimizda_baslik;
+    private $hakkimizda_icerik;
+    private $hakkimizda_resim;
+
+
+    public function hakkimizdaGuncelle()
+    {
+
+        $this->hakkimizda_id = 1;
+        $this->hakkimizda_baslik = htmlspecialchars($_POST['hakkimizda_baslik'], ENT_QUOTES);
+        $this->hakkimizda_icerik = htmlspecialchars($_POST['hakkimizda_icerik'], ENT_QUOTES);
+        $this->hakkimizda_resim  = $_FILES["hakkimizda_resim"];
+
+        $resimadi = null;
+        if(isset($_FILES['hakkimizda_resim'])&& $_FILES['hakkimizda_resim']['error'] === UPLOAD_ERR_OK){
+
+            $resimadi = $_FILES['hakkimizda_resim']['name'];
+            $hedefKlasor = '../../images/hakkimizda/';
+            $hedefDosya = $hedefKlasor.$resimadi;
+
+            if(move_uploaded_file($_FILES['hakkimizda_resim']['tmp_name'], $hedefDosya)){
+                $resimadi = $resimadi;
+            }else{
+                echo "Resim Yükleme İşlemi Başarısız Oldu!";
+            }
+        }
+
+        $query = "UPDATE hakkimizda SET hakkimizda_baslik=:hakkimizda_baslik, hakkimizda_icerik=:hakkimizda_icerik";
+
+        if($resimadi){
+            $query .=", hakkimizda_resim=:hakkimizda_resim";
+        }
+        $query .= " WHERE hakkimizda_id=:hakkimizda_id";
+        $stmt =$this->connect()->prepare($query);
+        $params = [
+            'hakkimizda_id'=> $this->hakkimizda_id,
+            'hakkimizda_baslik' => $this->hakkimizda_baslik,
+            'hakkimizda_icerik' => $this->hakkimizda_icerik
+        ];
+
+        if($resimadi){
+            $params['hakkimizda_resim'] = $resimadi;
+        }
+        return $stmt->execute($params); 
+    }
+}
+class NedenBiz extends Db
+{
+    private $ndn_id;
+    private $ndn_baslik;
+    private $ndn_icerik;
+    private $ndn_durum;
+    private $ndn_resim;
+
+    public function nedenBizEkle()
+    {
+        $this->ndn_baslik = htmlspecialchars($_POST["ndn_baslik"], ENT_QUOTES);
+        $this->ndn_icerik = htmlspecialchars($_POST["ndn_icerik"], ENT_QUOTES);
+        $this->ndn_durum = htmlspecialchars($_POST["ndn_durum"], ENT_QUOTES);
+        $this->ndn_resim = $_FILES["ndn_resim"];
+
+        $dest_path = "../../images/nedenbiz/";
+        $this->ndn_resim = $_FILES["ndn_resim"]["name"];
+        $fileSourcePath = $_FILES["ndn_resim"]["tmp_name"];
+        $fileDestPath = $dest_path . $this->ndn_resim;
+        move_uploaded_file($fileSourcePath, $fileDestPath);
+
+        $query = "INSERT INTO nedenbiz(ndn_baslik, ndn_icerik, ndn_durum, ndn_resim) VALUES (:ndn_baslik, :ndn_icerik, :ndn_durum, :ndn_resim)";
+        $stmt = $this->connect()->prepare($query);
+
+        $stmt->bindParam(':ndn_baslik', $this->ndn_baslik);
+        $stmt->bindParam(':ndn_icerik', $this->ndn_icerik);
+        $stmt->bindParam(':ndn_durum', $this->ndn_durum);
+        $stmt->bindParam(':ndn_resim', $this->ndn_resim);      
+        return $stmt->execute();
+    }
+    public function nedenBizGuncelle()
+    {
+        $this->ndn_id = $_GET["ndn_id"];
+        $this->ndn_baslik = htmlspecialchars($_POST["ndn_baslik"], ENT_QUOTES);
+        $this->ndn_icerik = htmlspecialchars($_POST["ndn_icerik"], ENT_QUOTES);
+        $this->ndn_durum = htmlspecialchars($_POST["ndn_durum"], ENT_QUOTES);
+        $this->ndn_resim = $_FILES["ndn_resim"];
+
+        $resimadi = null;
+
+        if(isset($_FILES['ndn_resim'])&& $_FILES['ndn_resim']['error'] === UPLOAD_ERR_OK){
+
+            $resimadi = $_FILES['ndn_resim']['name'];
+            $hedefKlasor = '../../images/nedenbiz/';
+            $hedefDosya = $hedefKlasor.$resimadi;
+
+            if(move_uploaded_file($_FILES['ndn_resim']['tmp_name'], $hedefDosya)){
+                $resimadi = $resimadi;
+            }else{
+                echo "Resim Yükleme İşlemi Başarısız Oldu!";
+            }
+        }
+
+        $query = "UPDATE nedenbiz SET ndn_baslik=:ndn_baslik, ndn_icerik=:ndn_icerik, ndn_durum=:ndn_durum";
+
+        if($resimadi){
+            $query .=", ndn_resim=:ndn_resim";
+        }
+        $query .= " WHERE ndn_id=:ndn_id";
+        $stmt =$this->connect()->prepare($query);
+
+        $params = [
+            'ndn_id'=> $this->ndn_id,
+            'ndn_baslik' => $this->ndn_baslik,
+            'ndn_icerik' => $this->ndn_icerik,
+            'ndn_durum' => $this->ndn_durum
+        ];
+
+        if($resimadi){
+            $params['ndn_resim'] = $resimadi;
+        }
+
+        return $stmt->execute($params); 
+    }
+}
+class Takim extends Db
+{
+    private $takim_id;
+    private $takim_isim;
+    private $takim_gorev;
+    private $takim_durum;
+    private $takim_twitter;
+    private $takim_instagram;
+    private $takim_linkedin;
+    private $takim_resim;
+
+    public function takimEkle()
+    {
+        $this->takim_isim = htmlspecialchars($_POST["takim_isim"], ENT_QUOTES);
+        $this->takim_gorev = htmlspecialchars($_POST["takim_gorev"], ENT_QUOTES);
+        $this->takim_durum = htmlspecialchars($_POST["takim_durum"], ENT_QUOTES);
+        $this->takim_twitter = htmlspecialchars($_POST["takim_twitter"], ENT_QUOTES);
+        $this->takim_instagram = htmlspecialchars($_POST["takim_instagram"], ENT_QUOTES);
+        $this->takim_linkedin = htmlspecialchars($_POST["takim_linkedin"], ENT_QUOTES);
+        $this->takim_resim  = $_FILES["takim_resim"];
+
+        $dest_path = "../../images/takim/";
+        $this->takim_resim = $_FILES["takim_resim"]["name"];
+        $fileSourcePath = $_FILES["takim_resim"]["tmp_name"];
+        $fileDestPath = $dest_path . $this->takim_resim;
+        move_uploaded_file($fileSourcePath, $fileDestPath);
+
+        $query = "INSERT INTO takim(takim_isim, takim_gorev, takim_durum, takim_twitter, takim_instagram, takim_linkedin, takim_resim) VALUES (:takim_isim, :takim_gorev, :takim_durum, :takim_twitter, :takim_instagram, :takim_linkedin, :takim_resim)";
+        $stmt = $this->connect()->prepare($query);
+
+        $stmt->bindParam(':takim_isim', $this->takim_isim);
+        $stmt->bindParam(':takim_gorev', $this->takim_gorev);
+        $stmt->bindParam(':takim_durum', $this->takim_durum);
+        $stmt->bindParam(':takim_twitter', $this->takim_twitter);
+        $stmt->bindParam(':takim_instagram', $this->takim_instagram);
+        $stmt->bindParam(':takim_linkedin', $this->takim_linkedin);
+        $stmt->bindParam(':takim_resim', $this->takim_resim);
+
+        return $stmt->execute();
+
+
+    }
+    public function takimGuncelle()
+    {
+        $this->takim_id = $_GET["takim_id"];
+        $this->takim_isim = htmlspecialchars($_POST["takim_isim"], ENT_QUOTES);
+        $this->takim_gorev = htmlspecialchars($_POST["takim_gorev"], ENT_QUOTES);
+        $this->takim_durum = htmlspecialchars($_POST["takim_durum"], ENT_QUOTES);
+        $this->takim_twitter = htmlspecialchars($_POST["takim_twitter"], ENT_QUOTES);
+        $this->takim_instagram = htmlspecialchars($_POST["takim_instagram"], ENT_QUOTES);
+        $this->takim_linkedin = htmlspecialchars($_POST["takim_linkedin"], ENT_QUOTES);
+        $this->takim_resim  = $_FILES["takim_resim"];
+
+        $resimadi = null;
+
+        if(isset($_FILES['takim_resim'])&& $_FILES['takim_resim']['error'] === UPLOAD_ERR_OK){
+
+            $resimadi = $_FILES['takim_resim']['name'];
+            $hedefKlasor = '../../images/takim/';
+            $hedefDosya = $hedefKlasor.$resimadi;
+
+            if(move_uploaded_file($_FILES['takim_resim']['tmp_name'], $hedefDosya)){
+                $resimadi = $resimadi;
+            }else{
+                echo "Resim Yükleme İşlemi Başarısız Oldu!";
+            }
+        }
+
+        $query = "UPDATE takim SET takim_isim=:takim_isim, takim_gorev=:takim_gorev, takim_durum=:takim_durum, takim_twitter=:takim_twitter, takim_instagram=:takim_instagram, takim_linkedin=:takim_linkedin";
+
+        if($resimadi){
+            $query .=", takim_resim=:takim_resim";
+        }
+        $query .= " WHERE takim_id=:takim_id";
+        $stmt =$this->connect()->prepare($query);
+
+        $params = [
+            'takim_id'=> $this->takim_id,
+            'takim_isim' => $this->takim_isim,
+            'takim_gorev' => $this->takim_gorev,
+            'takim_durum' => $this->takim_durum,
+            'takim_twitter' => $this->takim_twitter,
+            'takim_instagram' => $this->takim_instagram,
+            'takim_linkedin' => $this->takim_linkedin
+        ];
+
+        if($resimadi){
+            $params['takim_resim'] = $resimadi;
+        }
+
+        return $stmt->execute($params); 
+    }
+}
+class Ayar extends Db
+{
+    private $ayar_id = 1;
+    private $ayar_logo;
+    private $ayar_favicon;
+    private $ayar_telefon;
+    private $ayar_mail;
+    private $ayar_adres;
+    private $ayar_description;
+    private $ayar_keywords;
+    private $ayar_copyright;
+
+    public function genelAyarGuncelle()
+    {
+        
+        $this->ayar_logo = $_FILES["ayar_logo"];
+        $this->ayar_favicon = $_FILES["ayar_favicon"];
+        $this->ayar_telefon = htmlspecialchars($_POST["ayar_telefon"], ENT_QUOTES);
+        $this->ayar_mail = htmlspecialchars($_POST["ayar_mail"], ENT_QUOTES);
+        $this->ayar_adres = htmlspecialchars($_POST["ayar_adres"], ENT_QUOTES);
+        $this->ayar_description = htmlspecialchars($_POST["ayar_description"], ENT_QUOTES);
+        $this->ayar_keywords = htmlspecialchars($_POST["ayar_keywords"], ENT_QUOTES);
+        $this->ayar_copyright = htmlspecialchars($_POST["ayar_copyright"], ENT_QUOTES);
+
+        $logo = null;
+        
+        if(isset($_FILES['ayar_logo'])&& $_FILES['ayar_logo']['error'] === UPLOAD_ERR_OK){
+            $logo = $_FILES['ayar_logo']['name'];
+            $hedefKlasor = '../../images/ayar/logo/';
+            $hedefDosya = $hedefKlasor.$logo;
+
+            if(move_uploaded_file($_FILES['ayar_logo']['tmp_name'], $hedefDosya)){
+                $logo = $logo;
+            }else{
+                echo "Logo Yükleme İşlemi Başarısız Oldu!";
+            }
+        }
+
+        $favicon = null;
+
+        if(isset($_FILES['ayar_favicon'])&& $_FILES['ayar_favicon']['error'] === UPLOAD_ERR_OK){
+            $favicon = $_FILES['ayar_favicon']['name'];
+            $hedefKlasor = '../../images/ayar/favicon/';
+            $hedefDosya = $hedefKlasor.$favicon;
+
+            if(move_uploaded_file($_FILES['ayar_favicon']['tmp_name'], $hedefDosya)){
+                $favicon = $favicon;
+            }else{
+                echo "Favicon Yükleme İşlemi Başarısız Oldu!";
+            }
+        }
+        $query = "UPDATE ayar SET ";
+
+        if($logo)
+        {
+            $query .= "ayar_logo=:ayar_logo, ";
+        }
+        
+        if($favicon)
+        {
+            $query .="ayar_favicon=:ayar_favicon, ";
+        }
+
+        $query .="ayar_telefon=:ayar_telefon, ayar_mail=:ayar_mail, ayar_adres=:ayar_adres, ayar_description=:ayar_description, ayar_keywords=:ayar_keywords, ayar_copyright=:ayar_copyright WHERE ayar_id=:ayar_id";
+        $stmt =$this->connect()->prepare($query);
+
+        $params = [
+            'ayar_id' => $this->ayar_id,
+            'ayar_telefon' => $this->ayar_telefon, 
+            'ayar_mail' => $this->ayar_mail, 
+            'ayar_adres' => $this->ayar_adres, 
+            'ayar_description' => $this->ayar_description, 
+            'ayar_keywords' => $this->ayar_keywords, 
+            'ayar_copyright' => $this->ayar_copyright
+        ];
+
+        if($logo)
+        {
+            $params['ayar_logo'] = $logo;
+        }
+        if($favicon)
+        {
+            $params['ayar_favicon'] = $favicon;
+        }
+        return $stmt->execute($params);
+    }
+    public function sosyalAyarGuncelle()
+    {
+
     }
 }
 
