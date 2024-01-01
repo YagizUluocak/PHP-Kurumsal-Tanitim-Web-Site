@@ -5,7 +5,7 @@ include "../classes/functions.class.php";
 include "../inc/_header.php";
 
 
-include "../controller/takim.controller.php";
+include "../controller/modul.controller.php";
 session_start();
 ?>
 
@@ -24,8 +24,7 @@ session_start();
                     <div class="row g-4" style="min-height: 90vh;">
                         <div class="col-sm-12 col-xl-12">
                             <div class="bg-secondary rounded h-100 p-4">
-                                <h4 style="margin-bottom: 32px;">Takım</h4>
-                                <a href="takim-ekle.php?islem=takimekle" class="btn btn-success mb-2"><i class="fa fa-plus me-2"></i>Yeni Ekle</a>
+                                <h4 style="margin-bottom: 32px;">Modül</h4>
                                 <div class="table-responsive">
                                     <?php
                                     if($VeriGetir)
@@ -35,12 +34,10 @@ session_start();
                                             <thead>
                                                 <tr>
                                                     <th scope="col" style="width:50px;">#</th>
-                                                    <th scope="col" style="width:250px;">Resim</th>
-                                                    <th scope="col">İsim</th>
-                                                    <th scope="col">Görev</th>
-                                                    <th scope="col">Durum</th>
+                                                    <th scope="col">Modül Adı</th>
+                                                    <th scope="col">Modül Sıra</th>
+                                                    <th scope="col">Modül Durum</th>
                                                     <th scope="col" style="width:150px;">Düzenle</th>
-                                                    <th scope="col" style="width:150px;">Sil</th>
                                                 </tr>
                                             </thead>
                                             <?php
@@ -48,13 +45,11 @@ session_start();
                                             {
                                             ?>
                                                 <tr class="text-center">
-                                                    <th scope="row"><?php echo $veri->takim_id?></th>
-                                                    <td><img class="img-fluid" src="../../images/takim/<?php echo $veri->takim_resim?>" alt=""></td>
-                                                    <td><?php echo $veri->takim_isim?></td>
-                                                    <td><?php echo $veri->takim_gorev?></td>
-                                                    <td><?php echo $veri->takim_durum?></td>
-                                                    <td><a href="./takim-duzenle.php?takim_id=<?php echo $veri->takim_id?>&islem=takimguncelle" class="btn btn-warning btn-sm"><i class="fa fa-pen me-2"></i>Düzenle</a></td>
-                                                    <td><a href="takim.php?takim_id=<?php echo $veri->takim_id?>&islem=takimsil" class="btn btn-danger btn-sm"><i class="fa fa-trash me-2"></i>Sil</a></td>
+                                                    <th scope="row"><?php echo $veri->modul_id?></th>
+                                                    <td><?php echo $veri->modul_ad?></td>
+                                                    <td><?php echo $veri->modul_sira?></td>
+                                                    <td><?php echo $veri->modul_durum?></td>
+                                                    <td><a href="./modul-duzenle.php?modul_id=<?php echo $veri->modul_id?>&islem=mdlguncelle" class="btn btn-warning btn-sm"><i class="fa fa-pen me-2"></i>Düzenle</a></td>      
                                                 </tr>
                                             <?php
                                             }

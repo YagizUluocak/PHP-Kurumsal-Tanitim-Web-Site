@@ -6,7 +6,7 @@ include "../inc/_header.php";
 
 
 include "../controller/servis.controller.php";
-
+session_start();
 ?>
 
 <body>

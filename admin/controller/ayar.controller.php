@@ -18,6 +18,17 @@
             exit;
         }
     }
+
+    if(isset($_POST["guncelle"]))
+    {
+        $ayar = new Ayar();
+        $sosyalGuncelle = $ayar->sosyalAyarGuncelle();   
+        
+        if($sosyalGuncelle){
+            echo "<script>window.location.href='ayar-sosyal.php';</script>";
+            exit;
+        }
+    }
     
 
 ?>

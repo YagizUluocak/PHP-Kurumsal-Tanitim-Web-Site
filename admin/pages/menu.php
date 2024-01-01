@@ -6,7 +6,9 @@ include "../classes/functions.class.php";
 
 
 
-<?php include "../inc/_header.php";?>
+<?php include "../inc/_header.php";
+session_start();
+?>
     <body>
         <div class="container-fluid position-relative d-flex p-0">
             <!-- Sidebar Start -->

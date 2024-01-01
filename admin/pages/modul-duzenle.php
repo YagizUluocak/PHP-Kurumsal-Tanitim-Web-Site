@@ -1,13 +1,14 @@
 <?php
 require_once('../classes/db.class.php');
 include "../classes/functions.class.php";
-?>
+
+include "../inc/_header.php";
 
 
-<?php include "../inc/_header.php";
-
+include "../controller/modul.controller.php";
 session_start();
 ?>
+
     <body>
         <div class="container-fluid position-relative d-flex p-0" style="background-color: white; height: 100%;">
             <!-- Sidebar Start -->
@@ -23,20 +24,25 @@ session_start();
                     <div class="row g-4" style="min-height: 70vh;">
                         <div class="col-sm-12 col-xl-12">
                             <div class="bg-light rounded h-100 p-4" >
-                                <h6 class="mb-4">Menü Düzenle</h6>
+                                <h6 class="mb-4">Modül Düzenle</h6>
               
                                 <form method="POST">
                                     <div class="mb-3">
-                                            <label for="menu_ad" class="form-label"> <h6 style="color: black;">Menü Ad</h6></label>
-                                            <input type="text" class="form-control" id="menu_ad" name="menu_ad" >
+                                            <label for="modul_ad" class="form-label"> <h6 style="color: black;">Modül Adı</h6></label>
+                                            <input type="text" class="form-control" id="modul_ad" name="modul_ad" value="<?php echo $veriIdGetir->modul_ad?>">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="menu_url" class="form-label"><h6 style="color: black;">Menü Url</h6></label>
-                                        <input type="text" class="form-control" id="menu_url" name="menu_url">
+                                        <label for="modul_sira" class="form-label"><h6 style="color: black;">Modül Sıra</h6></label>
+                                        <input type="text" class="form-control" id="modul_sira" name="modul_sira" value="<?php echo $veriIdGetir->modul_sira?>">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="modul_durum" class="form-label"><h6 style="color: black;">Modül durum</h6></label>
+                                        <input type="text" class="form-control" id="modul_durum" name="modul_durum" value="<?php echo $veriIdGetir->modul_durum?>">
                                     </div>
 
-                                    <button type="submit" class="btn btn-success rounded-pill" name="submit">Kaydet</button>
+                                    <button type="submit" class="btn btn-success rounded-pill" name="submit">Güncelle</button>
                                 </form>
+
                             </div>
                         </div>
                     </div>

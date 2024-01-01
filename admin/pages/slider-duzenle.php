@@ -4,7 +4,7 @@ include "../classes/functions.class.php";
 include "../inc/_header.php";
 
 include "../controller/slider.controller.php";
-
+session_start();
 ?>
 
 <body>

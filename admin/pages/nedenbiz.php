@@ -6,7 +6,7 @@ include "../inc/_header.php";
 
 
 include "../controller/nedenbiz.controller.php";
-
+session_start();
 ?>
 <body>
     <div class="container-fluid position-relative d-flex p-0">

@@ -3,7 +3,7 @@
 class Veri extends Db
 {
     private $tablo_ad;
-    private $tablolar = ['slider','servis','hakkimizda', 'nedenbiz', 'takim', 'ayar'];
+    private $tablolar = ['slider','servis','hakkimizda', 'nedenbiz', 'takim', 'ayar', 'yonetici', 'modul'];
 
     private $id_alan_isim;
     private $tablo_id;
@@ -427,6 +427,10 @@ class Ayar extends Db
     private $ayar_keywords;
     private $ayar_copyright;
 
+    private $ayar_facebook;
+    private $ayar_twitter;
+    private $ayar_instagram;
+
     public function genelAyarGuncelle()
     {
         
@@ -503,8 +507,136 @@ class Ayar extends Db
     }
     public function sosyalAyarGuncelle()
     {
+        $this->ayar_facebook = htmlspecialchars($_POST["ayar_facebook"], ENT_QUOTES);
+        $this->ayar_twitter = htmlspecialchars($_POST["ayar_twitter"], ENT_QUOTES);
+        $this->ayar_instagram = htmlspecialchars($_POST["ayar_instagram"], ENT_QUOTES);
 
+        $query = "UPDATE ayar SET ayar_facebook=:ayar_facebook, ayar_twitter=:ayar_twitter, ayar_instagram=:ayar_instagram WHERE ayar_id=:ayar_id";
+        $stmt =$this->connect()->prepare($query);
+
+        $params = [
+            'ayar_id' => $this->ayar_id,
+            'ayar_facebook' => $this->ayar_facebook, 
+            'ayar_twitter' => $this->ayar_twitter, 
+            'ayar_instagram' => $this->ayar_instagram
+        ];
+        return $stmt->execute($params);
     }
 }
+class Modul extends Db
+{
+    private $modul_id;
+    private $modul_ad;
+    private $modul_sira;
+    private $modul_durum;
 
+    public function modulDuzenle()
+    {
+        $this->modul_id = $_GET["modul_id"];
+        $this->modul_sira = htmlspecialchars($_POST["modul_sira"], ENT_QUOTES);
+        $this->modul_durum = htmlspecialchars($_POST["modul_durum"], ENT_QUOTES);
+
+        $query = "UPDATE modul SET modul_sira=:modul_sira, modul_durum=:modul_durum WHERE modul_id=:modul_id";
+        $stmt = $this->connect()->prepare($query);
+
+        $params = [
+            'modul_id'    => $this->modul_id,
+            'modul_sira'  => $this->modul_sira,
+            'modul_durum' => $this->modul_durum
+        ];
+        return $stmt->execute($params);
+    }
+}
+class Yonetici extends Db
+{
+    private $yonetici_id;
+    private $yonetici_adsoyad;
+    private $yonetici_mail;
+    private $yonetici_username;
+    private $yonetici_password;
+
+    public function yoneticiEkle()
+    {
+        $this->yonetici_adsoyad  = htmlspecialchars($_POST["yonetici_adsoyad"], ENT_QUOTES);
+        $this->yonetici_mail     = htmlspecialchars($_POST["yonetici_mail"], ENT_QUOTES);
+        $this->yonetici_username = htmlspecialchars($_POST["yonetici_username"], ENT_QUOTES);
+        $this->yonetici_password = password_hash($_POST["yonetici_password"], PASSWORD_DEFAULT);
+
+        $query = "INSERT INTO yonetici(yonetici_adsoyad, yonetici_mail, yonetici_username, yonetici_password) VALUES (:yonetici_adsoyad, :yonetici_mail, :yonetici_username, :yonetici_password)";
+        $stmt = $this->connect()->prepare($query);
+
+        return $stmt->execute([
+            'yonetici_adsoyad'  => $this->yonetici_adsoyad,
+            'yonetici_mail'     => $this->yonetici_mail,
+            'yonetici_username' => $this->yonetici_username,
+            'yonetici_password' => $this->yonetici_password
+        ]);
+    }
+    public function yoneticiDuzenle()
+    {
+        $this->yonetici_id       = $_GET["yonetici_id"];
+        $this->yonetici_adsoyad  = htmlspecialchars($_POST["yonetici_adsoyad"], ENT_QUOTES);
+        $this->yonetici_mail     = htmlspecialchars($_POST["yonetici_mail"], ENT_QUOTES);
+        $this->yonetici_username = htmlspecialchars($_POST["yonetici_username"], ENT_QUOTES);
+        $this->yonetici_password = htmlspecialchars(md5($_POST["yonetici_password"]), ENT_QUOTES);
+
+        $query = "UPDATE yonetici SET yonetici_adsoyad=:yonetici_adsoyad, yonetici_mail=:yonetici_mail, yonetici_username=:yonetici_username, yonetici_password=:yonetici_password WHERE yonetici_id=:yonetici_id";
+
+        $stmt = $this->connect()->prepare($query);
+
+        $params = [
+            'yonetici_id' => $this->yonetici_id,
+            'yonetici_adsoyad' => $this->yonetici_adsoyad,
+            'yonetici_mail' => $this->yonetici_mail,
+            'yonetici_username' => $this->yonetici_username,
+            'yonetici_password' => $this->yonetici_password
+        ];
+        return $stmt->execute($params);
+    }
+}
+class Login extends Db
+{
+
+    private $yonetici_username;
+    private $yonetici_password;
+
+    public function girisYap()
+    {
+        $this->yonetici_username = $_POST["yonetici_username"];
+        $this->yonetici_password = $_POST["yonetici_password"];
+
+        $query = "SELECT * FROM yonetici WHERE yonetici_username=:yonetici_username";
+        $stmt = $this->connect()->prepare($query);
+        
+        $stmt->execute([
+            'yonetici_username' => $this->yonetici_username
+        ]);
+        $sayi = $stmt->rowCount();
+        if($sayi > 0)
+        {
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            $sifre = $user['yonetici_password'];
+
+            if(password_verify($this->yonetici_password, $sifre))
+            {
+                session_start();
+                $_SESSION["yonetici_adsoyad"] = $user["yonetici_adsoyad"];
+                $_SESSION["yonetici_mail"] = $user["yonetici_mail"];
+                $_SESSION["yonetici_username"] = $user["yonetici_username"];
+                
+                header("location:index.php");
+            
+            }
+            else
+            {
+            echo '<div class="alert alert-danger" role="alert">Kullanıcı Adı veya şifre hatalı.</div>';
+
+            }
+        }
+        else
+        {
+            echo '<div class="alert alert-danger" role="alert">Kullanıcı Adı Hatalı.</div>';
+        }
+    }
+}
 ?>

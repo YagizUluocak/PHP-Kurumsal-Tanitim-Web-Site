@@ -1,9 +1,13 @@
 <?php
 require_once('../classes/db.class.php');
 include "../classes/functions.class.php";
-?>
 
-<?php include "../inc/_header.php";?>
+include "../inc/_header.php";
+
+
+include "../controller/ayar.controller.php";
+session_start();
+?>
 
 <body>
 <div class="container-fluid position-relative d-flex p-0" style="background-color: white; height: 100%;">
@@ -25,24 +29,25 @@ include "../classes/functions.class.php";
         
                             <form method="POST" style="min-height: 55vh;">
                                 <div class="mb-3">
-                                    <label for="ayar_linkedin" class="form-label"> <h6 style="color: black;">Linkedin</h6></label>
-                                    <input type="text" class="form-control" id="ayar_linkedin" name="ayar_linkedin">
+                                    <label for="ayar_facebook" class="form-label"> <h6 style="color: black;">Facebook</h6></label>
+                                    <input type="text" class="form-control" id="ayar_facebook" name="ayar_facebook" value="<?php echo $veriIdGetir->ayar_facebook?>">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="ayar_instagram" class="form-label"> <h6 style="color: black;">İnstagram</h6></label>
-                                    <input type="text" class="form-control" id="ayar_instagram" name="ayar_instagram">
+                                    <label for="ayar_twitter" class="form-label"> <h6 style="color: black;">Twitter</h6></label>
+                                    <input type="text" class="form-control" id="ayar_twitter" name="ayar_twitter" value="<?php echo $veriIdGetir->ayar_twitter?>">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="ayar_github" class="form-label"> <h6 style="color: black;">Github</h6></label>
-                                    <input type="text" class="form-control" id="ayar_github" name="ayar_github">
+                                    <label for="ayar_instagram" class="form-label"> <h6 style="color: black;">Instagram</h6></label>
+                                    <input type="text" class="form-control" id="ayar_instagram" name="ayar_instagram" value="<?php echo $veriIdGetir->ayar_instagram?>">
                                 </div>
-                                    <button type="submit" class="btn btn-success rounded-pill" name="submit">Güncelle</button>
+                                    <button type="submit" class="btn btn-success rounded-pill" name="guncelle">Güncelle</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Footer Start -->
         <?php include "../inc/_footer.php";?>
         <!-- Footer End -->
