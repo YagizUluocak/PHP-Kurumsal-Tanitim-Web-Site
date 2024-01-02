@@ -14,6 +14,7 @@ include "./inc/_head.php";
  $hakkimizdagetir = $veri->hakkimizdaGetir();
  $nedenbizgetir = $veri->nedenbizGetir();
  $takimgetir = $veri->takimGetir();
+ $ayargetir = $veri->ayarGetir();
 ?>
 
 <body>
@@ -237,7 +238,7 @@ include "./inc/_head.php";
         <div class="container-fluid">
           <div class="heading_container heading_center">
             <h2 class="">
-              Our <span> Team</span>
+              <span>Takım</span>
             </h2>
           </div>
 
@@ -303,59 +304,61 @@ include "./inc/_head.php";
   <section class="info_section layout_padding2">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-lg-3 info_col">
+        <div class="col-md-6 col-lg-4 info_col">
           <div class="info_contact">
             <h4>
-              Address
+              İletişim
             </h4>
             <div class="contact_link_box">
               <a href="">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Location
+                <?php echo $ayargetir->ayar_adres?>
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call +01 1234567890
+                <?php echo $ayargetir->ayar_telefon?>
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
-                  demo@gmail.com
+                <?php echo $ayargetir->ayar_mail?>
                 </span>
               </a>
             </div>
           </div>
           <div class="info_social">
-            <a href="">
+            <a href="<?php echo $ayargetir->ayar_facebook?>">
               <i class="fa fa-facebook" aria-hidden="true"></i>
             </a>
-            <a href="">
+            <a href="<?php echo $ayargetir->ayar_twitter?>">
               <i class="fa fa-twitter" aria-hidden="true"></i>
             </a>
-            <a href="">
-              <i class="fa fa-linkedin" aria-hidden="true"></i>
-            </a>
-            <a href="">
+            <a href="<?php echo $ayargetir->ayar_instagram?>">
               <i class="fa fa-instagram" aria-hidden="true"></i>
             </a>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 info_col">
+        <div class="col-md-6 col-lg-4 info_col">
+
+        <?php 
+          $hakkmizda_metin = $hakkimizdagetir->hakkimizda_icerik;
+          $substr = substr($hakkmizda_metin, 0, 208);    
+        ?>
           <div class="info_detail">
             <h4>
-              Info
+              Hakkımızda
             </h4>
             <p>
-              necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful
+            <?php echo $substr; ?>
             </p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-2 mx-auto info_col">
-          <div class="info_link_box">
+        <div class="col-md-6 col-lg-4  info_col" >
+          <div class="info_link_box" style="float: right;">
             <h4>
               Links
             </h4>
@@ -378,17 +381,7 @@ include "./inc/_head.php";
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 info_col ">
-          <h4>
-            Subscribe
-          </h4>
-          <form action="#">
-            <input type="text" placeholder="Enter email" />
-            <button type="submit">
-              Subscribe
-            </button>
-          </form>
-        </div>
+
       </div>
     </div>
   </section>
@@ -399,8 +392,7 @@ include "./inc/_head.php";
   <section class="footer_section">
     <div class="container">
       <p>
-        &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
+      <?php echo $ayargetir->ayar_copyright?>
       </p>
     </div>
   </section>

@@ -38,5 +38,12 @@ class VeriGetir extends Db
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    public function ayarGetir()
+    {
+        $query = "SELECT * FROM ayar";   
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 }
 ?>
