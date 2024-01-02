@@ -197,6 +197,14 @@ class Servis extends Db
         }
         return $stmt->execute($params); 
     }
+    public function servisModul()
+    {
+        $query = "SELECT * FROM sayfa_modul AS sm INNER JOIN modul AS m ON sm.modul_id = m.modul_id INNER JOIN sayfalar AS s ON sm.sayfa_id = s.sayfa_id WHERE m.modul_durum = 1 AND s.sayfa_adi = 'servis'";
+
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 }
 class Hakkimizda extends Db
 {
@@ -245,6 +253,14 @@ class Hakkimizda extends Db
             $params['hakkimizda_resim'] = $resimadi;
         }
         return $stmt->execute($params); 
+    }
+    public function hakkimizdaModul()
+    {
+        $query = "SELECT * FROM sayfa_modul AS sm INNER JOIN modul AS m ON sm.modul_id = m.modul_id INNER JOIN sayfalar AS s ON sm.sayfa_id = s.sayfa_id WHERE m.modul_durum = 1 AND s.sayfa_adi = 'hakkimizda'";
+
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch();
     }
 }
 class NedenBiz extends Db
@@ -320,6 +336,14 @@ class NedenBiz extends Db
         }
 
         return $stmt->execute($params); 
+    }
+    public function nedenbizModul()
+    {
+        $query = "SELECT * FROM sayfa_modul AS sm INNER JOIN modul AS m ON sm.modul_id = m.modul_id INNER JOIN sayfalar AS s ON sm.sayfa_id = s.sayfa_id WHERE m.modul_durum = 1 AND s.sayfa_adi = 'nedenbiz'";
+
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch();
     }
 }
 class Takim extends Db
@@ -413,6 +437,14 @@ class Takim extends Db
         }
 
         return $stmt->execute($params); 
+    }
+    public function takimModul()
+    {
+        $query = "SELECT * FROM sayfa_modul AS sm INNER JOIN modul AS m ON sm.modul_id = m.modul_id INNER JOIN sayfalar AS s ON sm.sayfa_id = s.sayfa_id WHERE m.modul_durum = 1 AND s.sayfa_adi = 'takim'";
+
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch();
     }
 }
 class Ayar extends Db
@@ -638,5 +670,13 @@ class Login extends Db
             echo '<div class="alert alert-danger" role="alert">Kullanıcı Adı Hatalı.</div>';
         }
     }
+}
+
+
+
+
+class services extends Db
+{
+    
 }
 ?>
