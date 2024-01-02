@@ -13,6 +13,7 @@ include "./inc/_head.php";
  $servisgetir = $veri->servisGetir();
  $hakkimizdagetir = $veri->hakkimizdaGetir();
  $nedenbizgetir = $veri->nedenbizGetir();
+ $takimgetir = $veri->takimGetir();
 ?>
 
 <body>
@@ -242,134 +243,44 @@ include "./inc/_head.php";
 
           <div class="team_container">
             <div class="row">
-              <div class="col-lg-3 col-sm-6">
-                <div class="box ">
-                  <div class="img-box">
-                    <img src="images/team-1.jpg" class="img1" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      Joseph Brown
-                    </h5>
-                    <p>
-                      Marketing Head
-                    </p>
-                  </div>
-                  <div class="social_box">
-                    <a href="#">
-                      <i class="fa fa-facebook" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-linkedin" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-sm-6">
-                <div class="box ">
-                  <div class="img-box">
-                    <img src="images/team-2.jpg" class="img1" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      Nancy White
-                    </h5>
-                    <p>
-                      Marketing Head
-                    </p>
-                  </div>
-                  <div class="social_box">
-                    <a href="#">
-                      <i class="fa fa-facebook" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-linkedin" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                    </a>
+              <?php
+              foreach($takimgetir as $takim)
+              {
+              ?>
+                <div class="col-lg-3 col-sm-6">
+                  <div class="box ">
+                    <div class="img-box">
+                      <img src="./images/takim/<?php echo $takim->takim_resim?>" class="img1" alt="">
+                    </div>
+                    <div class="detail-box">
+                      <h5>
+                        <?php echo $takim->takim_isim?>
+                      </h5>
+                      <p>
+                        <?php echo $takim->takim_gorev?>
+                      </p>
+                    </div>
+                    <div class="social_box">
+                      <a href="<?php echo $takim->takim_twitter?>" target="_blank">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                      </a>
+                      <a href="<?php echo $takim->takim_instagram?>" target="_blank">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                      </a>
+                      <a href="<?php echo $takim->takim_linkedin?>" target="_blank">
+                        <i class="fa fa-linkedin" aria-hidden="true"></i>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-lg-3 col-sm-6">
-                <div class="box ">
-                  <div class="img-box">
-                    <img src="images/team-3.jpg" class="img1" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      Earl Martinez
-                    </h5>
-                    <p>
-                      Marketing Head
-                    </p>
-                  </div>
-                  <div class="social_box">
-                    <a href="#">
-                      <i class="fa fa-facebook" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-linkedin" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-sm-6">
-                <div class="box ">
-                  <div class="img-box">
-                    <img src="images/team-4.jpg" class="img1" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      Josephine Allard
-                    </h5>
-                    <p>
-                      Marketing Head
-                    </p>
-                  </div>
-                  <div class="social_box">
-                    <a href="#">
-                      <i class="fa fa-facebook" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-linkedin" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
+
+              <?php
+              }
+              ?>
+
+
+
+
             </div>
           </div>
         </div>

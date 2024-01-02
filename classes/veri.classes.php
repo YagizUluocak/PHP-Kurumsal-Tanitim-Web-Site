@@ -31,5 +31,12 @@ class VeriGetir extends Db
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    public function takimGetir()
+    {
+        $query = "SELECT * FROM takim WHERE takim_durum = 1";   
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
 ?>
