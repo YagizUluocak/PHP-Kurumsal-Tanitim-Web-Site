@@ -36,7 +36,7 @@ else
                                     <form method="POST" enctype="multipart/form-data" style="min-height: 50vh;">
                                         <div class="mb-3">
                                         <label for="servis_resim" class="form-label d-block"> <h6 style="color: black;">Servis Resim</h6> </label>
-                                            <img style="width:200px;" class="img-fluid mb-4" src="../../images/servis/<?php echo $veriIdGetir->servis_resim?>" alt="">
+                                            <img style="width:150px;" class="img-fluid mb-4" src="../../images/servis/<?php echo $veriIdGetir->servis_resim?>" alt="">
 
                                             <input class="form-control bg-dark" type="file" id="servis_resim" name="servis_resim">
                                         </div>
@@ -49,8 +49,11 @@ else
                                             <input type="text" class="form-control" id="servis_aciklama" name="servis_aciklama" value="<?php echo $veriIdGetir->servis_aciklama ?>">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="servis_durum" class="form-label"><h6 style="color: black;">Servis Durum</h6></label>
-                                            <input type="number" class="form-control" id="servis_durum" name="servis_durum" value="<?php echo $veriIdGetir->servis_durum ?>">
+                                            <label for="servis_durum" class="form-label"><h6 style="color: black;">Servis Durumu</h6></label>
+                                            <select class="form-control" name="servis_durum" id="servis_durum">
+                                                <option name="servis_durum" value="1">Göster</option>
+                                                <option name="servis_durum" value="0">Gizle</option>
+                                            </select>
                                         </div>
                                             <button type="submit" class="btn btn-success rounded-pill" name="submit">Kaydet</button>
                                     </form>

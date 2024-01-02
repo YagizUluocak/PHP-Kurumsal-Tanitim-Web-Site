@@ -48,8 +48,11 @@ else
                                                 <input type="text" class="form-control" id="servis_aciklama" name="servis_aciklama">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="servis_durum" class="form-label"><h6 style="color: black;">Servis Durum</h6></label>
-                                                <input type="number" class="form-control" id="servis_durum" name="servis_durum">
+                                                <label for="servis_durum" class="form-label"><h6 style="color: black;">Servis Durumu</h6></label>
+                                                <select class="form-control" name="servis_durum" id="servis_durum">
+                                                    <option name="servis_durum" value="1">Göster</option>
+                                                    <option name="servis_durum" value="0">Gizle</option>
+                                                </select>
                                             </div>
                                                 <button type="submit" class="btn btn-success rounded-pill" name="submit">Kaydet</button>
                                         </form>

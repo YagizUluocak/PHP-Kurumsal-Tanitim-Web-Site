@@ -42,8 +42,8 @@ else
                                                 <thead>
                                                     <tr>
                                                         <th scope="col" style="width:50px;">#</th>
+                                                        <th scope="col" style="width:150px;">Slider Resim</th>
                                                         <th scope="col">Slider Başlık</th>
-                                                        <th scope="col">Slider Açıklama</th>
                                                         <th scope="col">Slider Durum</th>
                                                         <th scope="col" style="width:150px;">Düzenle</th>
                                                         <th scope="col" style="width:150px;">Sil</th>
@@ -55,9 +55,20 @@ else
                                                             ?>
                                                                 <tr>
                                                                     <th scope="row"><?php echo $veri->slider_id?></th>
+                                                                    <td><img class="img-fluid" src="../../images/slider/<?php echo $veri->slider_resim?>" alt=""></td>
                                                                     <td><?php echo $veri->slider_baslik?></td>
-                                                                    <td><?php echo $veri->slider_aciklama?></td>
-                                                                    <td><?php echo $veri->slider_durum?></td>
+                                                                    <td>
+                                                                    <?php 
+                                                                        if($veri->slider_durum == 1)
+                                                                        {
+                                                                            echo "<p style = 'color:green;'>Göster</p>";
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                        echo "<p style = 'color:red;'>Gizli</p>";
+                                                                        }
+                                                                    ?>
+                                                                    </td>
                                                                     <td><a href="./slider-duzenle.php?slider_id=<?php echo $veri->slider_id?>&islem=SliderGuncelle" class="btn btn-warning btn-sm" name = "guncelle"><i class="fa fa-pen me-2"></i>Düzenle</a></td>
                                                                     <td><a href="./slider.php?slider_id=<?php echo $veri->slider_id?>&islem=sliderSil" class="btn btn-danger btn-sm"><i class="fa fa-trash me-2"></i>Sil</a></td>
                                                                 </tr>

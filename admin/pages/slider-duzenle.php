@@ -48,8 +48,11 @@ else
                                                 <textarea class="form-control" name="slider_aciklama" id="slider_aciklama"><?php echo $veriIdGetir->slider_aciklama ?></textarea>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="slider_durum" class="form-label"><h6 style="color: black;">Slider Durum</h6></label>
-                                                <input type="text" class="form-control" id="slider_durum" name="slider_durum" value="<?php echo $veriIdGetir->slider_durum ?>">
+                                                <label for="slider_durum" class="form-label"><h6 style="color: black;">Slider Durumu</h6></label>
+                                                <select class="form-control" name="slider_durum" id="slider_durum">
+                                                    <option name="slider_durum" value="1">Göster</option>
+                                                    <option name="slider_durum" value="0">Gizle</option>
+                                                </select>
                                             </div>
                                                 <button type="submit" class="btn btn-success rounded-pill" name="submit">Kaydet</button>
                                         </form>

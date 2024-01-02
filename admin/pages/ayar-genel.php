@@ -45,7 +45,7 @@ else
                                                         <div class="col-6">
                                                             <div class="mb-3">
                                                                 <label for="ayar_logo" class="form-label"><h6 style="color: white;">Logo</h6></label>
-                                                                <img class="img-fluid d-block mb-4" style="width: 200px;" src="../../images/ayar/logo/<?php echo $veriIdGetir->ayar_logo?>" alt="">
+                                                                <img class="img-fluid d-block mb-4" style="width: 200px; height:100px;" src="../../images/ayar/logo/<?php echo $veriIdGetir->ayar_logo?>" alt="">
                                                                 <input type="file" class="form-control" name="ayar_logo" id="ayar_logo">
                                                             </div>
                                                         </div>
@@ -53,7 +53,7 @@ else
                                                         <div class="col-6">
                                                             <div class="mb-3">
                                                                 <label for="ayar_favicon" class="form-label"><h6 style="color: white;">Favicon</h6></label>
-                                                                <img class="img-fluid d-block mb-4" style="width: 200px;" src="../../images/ayar/favicon/<?php echo $veriIdGetir->ayar_favicon?>" alt="">
+                                                                <img class="img-fluid d-block mb-4" style="width: 100px; height:100px;" src="../../images/ayar/favicon/<?php echo $veriIdGetir->ayar_favicon?>" alt="">
                                                                 <input type="file" class="form-control" id="ayar_favicon" name="ayar_favicon" >
                                                             </div>
                                                         </div> 

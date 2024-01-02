@@ -58,10 +58,19 @@ else
                                                         ?>
                                                             <tr>
                                                                 <th scope="row"><?php echo $veri->servis_id?></th>
-                                                                <td><img class="img-fluid" src="../../images/servis/<?php echo $veri->servis_resim?>" alt=""></td>
+                                                                <td><img class="img-fluid" src="../../images/servis/<?php echo $veri->servis_resim?>" style ="height:80px;"></td>
                                                                 <td><?php echo $veri->servis_ad?></td>
-                                                                <td><?php echo $veri->servis_aciklama?></td>
-                                                                <td><?php echo $veri->servis_durum?></td>
+                                                                <td><?php echo substr($veri->servis_aciklama, 0,50)?></td>
+                                                                <td><?php 
+                                                                if($veri->servis_durum == 1)
+                                                                {
+                                                                    echo "<p style = 'color:green;'>Göster</p>";
+                                                                }
+                                                                else
+                                                                {
+                                                                    echo "<p style = 'color:red;'>Gizli</p>";
+                                                                }
+                                                                    ?></td>
                                                                 <td><a href="./servis-duzenle.php?servis_id=<?php echo $veri->servis_id?>&islem=ServisGuncelle" class="btn btn-warning btn-sm"><i class="fa fa-pen me-2"></i>Düzenle</a></td> 
                                                                 <td><a href="./servis.php?servis_id=<?php echo $veri->servis_id?>&islem=ServisSil" class="btn btn-danger mb-2"><i class="fa fa-trash me-2"></i>Sil</a></td>                
                                                             </tr>
