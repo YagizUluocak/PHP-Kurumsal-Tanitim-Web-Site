@@ -37,7 +37,6 @@
                             <a href="ayar-genel.php" class="dropdown-item"><i class="fa-solid fa-gear me-2"></i>Genel Ayarlar</a>
                             <a href="modul.php" class="dropdown-item"><i class="fa-solid fa-sort me-2"></i>Modül Ayarları</a>
                             <a href="ayar-sosyal.php" class="dropdown-item"><i class="fa-solid fa-hashtag me-2"></i>Sosyal Medya Ayarları</a>
-                            <a href="../pages/text.php" class="dropdown-item"><i class="fa-solid fa-globe me-2"></i>Dil Ayarları</a>
                         </div>
                     </div>
                     
