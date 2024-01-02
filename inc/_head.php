@@ -1,3 +1,8 @@
+
+<?php
+$veri = new VeriGetir();
+ $ayargetir = $veri->ayarGetir();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -8,10 +13,9 @@
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link rel="shortcut icon" href="images/favicon.png" type="">
+  <meta name="keywords" content="<?php echo $ayargetir->ayar_keywords?>" />
+  <meta name="description" content="<?php echo $ayargetir->ayar_description?>" />
+  <link rel="shortcut icon" href="./images/ayar/favicon/<?php echo $ayargetir->ayar_favicon?>" type="">
 
   <title> Finexo </title>
 

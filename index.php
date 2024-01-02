@@ -302,10 +302,27 @@ include "./inc/_head.php";
 
   <!-- info section -->
   <section class="info_section layout_padding2">
+    
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-lg-4 info_col">
-          <div class="info_contact">
+
+        <div class="col-md-6 col-lg-6 info_col">
+          <?php 
+            $hakkmizda_metin = $hakkimizdagetir->hakkimizda_icerik;
+            $substr = substr($hakkmizda_metin, 0, 208);    
+          ?>
+            <div class="info_detail">
+              <h4>
+                Hakkımızda
+              </h4>
+              <p>
+              <?php echo $substr; ?>
+              </p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6 info_col">
+          <div class="info_contact" style="float: right;">
             <h4>
               İletişim
             </h4>
@@ -329,54 +346,15 @@ include "./inc/_head.php";
                 </span>
               </a>
             </div>
-          </div>
-          <div class="info_social">
-            <a href="<?php echo $ayargetir->ayar_facebook?>">
-              <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-            <a href="<?php echo $ayargetir->ayar_twitter?>">
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-            <a href="<?php echo $ayargetir->ayar_instagram?>">
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 info_col">
-
-        <?php 
-          $hakkmizda_metin = $hakkimizdagetir->hakkimizda_icerik;
-          $substr = substr($hakkmizda_metin, 0, 208);    
-        ?>
-          <div class="info_detail">
-            <h4>
-              Hakkımızda
-            </h4>
-            <p>
-            <?php echo $substr; ?>
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4  info_col" >
-          <div class="info_link_box" style="float: right;">
-            <h4>
-              Links
-            </h4>
-            <div class="info_links">
-              <a class="active" href="index.html">
-                Home
+            <div class="info_social">
+              <a href="<?php echo $ayargetir->ayar_facebook?>">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
               </a>
-              <a class="" href="about.html">
-                About
+              <a href="<?php echo $ayargetir->ayar_twitter?>">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
               </a>
-              <a class="" href="service.html">
-                Services
-              </a>
-              <a class="" href="why.html">
-                Why Us
-              </a>
-              <a class="" href="team.html">
-                Team
+              <a href="<?php echo $ayargetir->ayar_instagram?>">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
               </a>
             </div>
           </div>
