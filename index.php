@@ -1,7 +1,18 @@
 <?php
 require_once('./admin/classes/db.class.php');
 include "./admin/classes/functions.class.php";
+
+include "./classes/veri.classes.php";
 include "./inc/_head.php";
+?>
+<?php
+
+ $veri = new VeriGetir();
+ $verigetir = $veri->sliderGetir();
+
+ $servisgetir = $veri->servisGetir();
+ $hakkimizdagetir = $veri->hakkimizdaGetir();
+ $nedenbizgetir = $veri->nedenbizGetir();
 ?>
 
 <body>
@@ -22,92 +33,38 @@ include "./inc/_head.php";
     <section class="slider_section ">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-6 ">
-                  <div class="detail-box">
-                    <h1>
-                      Crypto <br>
-                      Currency
-                    </h1>
-                    <p>
-                      1Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Read More
-                      </a>
+          
+          <?php
+
+            foreach($verigetir as $slid)
+            {
+              ?>
+                <div class="carousel-item active" style="min-height: 100%; max-height:100%;">
+                  <div class="container ">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="detail-box">
+                          <h1><?php echo $slid->slider_baslik?></h1>
+                          <p style="width: 100%;"><?php echo $slid->slider_aciklama?></p>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="img-box">
+                          <img class="img-fluid" src="images/slider/<?php echo $slid->slider_resim?>" alt="">
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-img.png" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item ">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-6 ">
-                  <div class="detail-box">
-                    <h1>
-                      Crypto <br>
-                      Currency
-                    </h1>
-                    <p>
-                      2 Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Read More
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-img.png" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-6 ">
-                  <div class="detail-box">
-                    <h1>
-                      Crypto <br>
-                      Currency
-                    </h1>
-                    <p>
-                      2 Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Read More
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-img.png" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+              <?php
+            }
+
+          ?>
+
+
         </div>
         <ol class="carousel-indicators">
           <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-          <li data-target="#customCarousel1" data-slide-to="1"></li>
-          <li data-target="#customCarousel1" data-slide-to="2"></li>
         </ol>
       </div>
 
@@ -128,79 +85,37 @@ include "./inc/_head.php";
         <div class="container ">
           <div class="heading_container heading_center">
             <h2>
-              Our <span>Services</span>
+              <span>Servislerimiz</span>
             </h2>
             <p>
               There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
             </p>
           </div>
           <div class="row">
-            <div class="col-md-4 ">
-              <div class="box ">
-                <div class="img-box">
-                  <img src="images/s1.png" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Currency Wallet
-                  </h5>
-                  <p>
-                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                    The
-                    point of using
-                  </p>
-                  <a href="">
-                    Read More
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 ">
-              <div class="box ">
-                <div class="img-box">
-                  <img src="images/s2.png" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Security Storage
-                  </h5>
-                  <p>
-                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                    The
-                    point of using
-                  </p>
-                  <a href="">
-                    Read More
-                  </a>
+          <?php
+          foreach($servisgetir as $servis)
+          {
+            ?>
+              <div class="col-md-4 ">
+                <div class="box ">
+                  <div class="img-box">
+                    <img src="./images/servis/<?php echo $servis->servis_resim?>" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                      <?php echo $servis->servis_ad?> 
+                    </h5>
+                    <p>
+                    <?php echo $servis->servis_aciklama?>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-4 ">
-              <div class="box ">
-                <div class="img-box">
-                  <img src="images/s3.png" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Expert Support
-                  </h5>
-                  <p>
-                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                    The
-                    point of using
-                  </p>
-                  <a href="">
-                    Read More
-                  </a>
-                </div>
-              </div>
-            </div>
+            <?php
+          }
+          ?>
           </div>
-          <div class="btn-box">
-            <a href="">
-              View All
-            </a>
-          </div>
+
         </div>
       </div>
     </section>
@@ -225,10 +140,10 @@ include "./inc/_head.php";
         <div class="container  ">
           <div class="heading_container heading_center">
             <h2>
-              About <span>Us</span>
+              <span>Hakkımızda</span>
             </h2>
             <p>
-              Magni quod blanditiis non minus sed aut voluptatum illum quisquam aspernatur ullam vel beatae rerum ipsum voluptatibus
+               illum quisquam aspernatur ullam vel beatae rerum ipsum voluptatibus
             </p>
           </div>
           <div class="row">
@@ -240,20 +155,11 @@ include "./inc/_head.php";
             <div class="col-md-6">
               <div class="detail-box">
                 <h3>
-                  We Are Finexo
+                <?php echo $hakkimizdagetir->hakkimizda_baslik ?>
                 </h3>
                 <p>
-                  There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-                  in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-                  are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-                  the middle of text. All
+                  <?php echo $hakkimizdagetir->hakkimizda_icerik ?>
                 </p>
-                <p>
-                  Molestiae odio earum non qui cumque provident voluptates, repellendus exercitationem, possimus at iste corrupti officiis unde alias eius ducimus reiciendis soluta eveniet. Nobis ullam ab omnis quasi expedita.
-                </p>
-                <a href="">
-                  Read More
-                </a>
               </div>
             </div>
           </div>
@@ -267,7 +173,7 @@ include "./inc/_head.php";
     $bg = "#00204a";
     $color = "white";
   }
-  ?>
+?>
 
   <?php
   $nedenbiz = new NedenBiz();
@@ -280,71 +186,32 @@ include "./inc/_head.php";
         <div class="container">
           <div class="heading_container heading_center">
             <h2>
-              Why Choose <span>Us</span>
+              Neden <span>Biz</span>
             </h2>
           </div>
           <div class="why_container">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/w1.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Expert Management
-                </h5>
-                <p>
-                  Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.
-                  Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus
-                </p>
-              </div>
-            </div>
-            <div class="box">
-              <div class="img-box">
-                <img src="images/w2.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Secure Investment
-                </h5>
-                <p>
-                  Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.
-                  Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus
-                </p>
-              </div>
-            </div>
-            <div class="box">
-              <div class="img-box">
-                <img src="images/w3.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Instant Trading
-                </h5>
-                <p>
-                  Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.
-                  Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus
-                </p>
-              </div>
-            </div>
-            <div class="box">
-              <div class="img-box">
-                <img src="images/w4.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Happy Customers
-                </h5>
-                <p>
-                  Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.
-                  Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="btn-box">
-            <a href="">
-              Read More
-            </a>
+
+            <?php
+            foreach($nedenbizgetir as $ndn)
+            {
+              ?>
+                <div class="box">
+                  <div class="img-box">
+                    <img src="./images/nedenbiz/<?php echo $ndn->ndn_resim?>" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                      <?php echo $ndn->ndn_baslik?>
+                    </h5>
+                    <p>
+                      <?php echo $ndn->ndn_icerik?>
+                    </p>
+                  </div>
+                </div>
+              <?php
+            }
+            ?>
+
           </div>
         </div>
       </section>
@@ -519,110 +386,6 @@ include "./inc/_head.php";
   ?>
 
 
-
-  <!-- client section -->
-  <section class="client_section layout_padding">
-    <div class="container">
-      <div class="heading_container heading_center psudo_white_primary mb_45">
-        <h2>
-          What says our <span>Customers</span>
-        </h2>
-      </div>
-      <div class="carousel-wrap ">
-        <div class="owl-carousel client_owl-carousel">
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client1.jpg" alt="" class="box-img">
-              </div>
-              <div class="detail-box">
-                <div class="client_id">
-                  <div class="client_info">
-                    <h6>
-                      LusDen
-                    </h6>
-                    <p>
-                      magna aliqua. Ut
-                    </p>
-                  </div>
-                  <i class="fa fa-quote-left" aria-hidden="true"></i>
-                </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client2.jpg" alt="" class="box-img">
-              </div>
-              <div class="detail-box">
-                <div class="client_id">
-                  <div class="client_info">
-                    <h6>
-                      Zen Court
-                    </h6>
-                    <p>
-                      magna aliqua. Ut
-                    </p>
-                  </div>
-                  <i class="fa fa-quote-left" aria-hidden="true"></i>
-                </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client1.jpg" alt="" class="box-img">
-              </div>
-              <div class="detail-box">
-                <div class="client_id">
-                  <div class="client_info">
-                    <h6>
-                      LusDen
-                    </h6>
-                    <p>
-                      magna aliqua. Ut
-                    </p>
-                  </div>
-                  <i class="fa fa-quote-left" aria-hidden="true"></i>
-                </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client2.jpg" alt="" class="box-img">
-              </div>
-              <div class="detail-box">
-                <div class="client_id">
-                  <div class="client_info">
-                    <h6>
-                      Zen Court
-                    </h6>
-                    <p>
-                      magna aliqua. Ut
-                    </p>
-                  </div>
-                  <i class="fa fa-quote-left" aria-hidden="true"></i>
-                </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- end client section -->
 
 
   <!-- info section -->

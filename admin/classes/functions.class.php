@@ -57,7 +57,7 @@ class Slider extends Db
     public function sliderEkle()
     {
         $this->slider_baslik = htmlspecialchars($_POST['slider_baslik'], ENT_QUOTES);
-        $this->slider_aciklama = htmlspecialchars($_POST['slider_aciklama'], ENT_QUOTES);
+        $this->slider_aciklama = $_POST['slider_aciklama'];
         $this->slider_resim = $_FILES["slider_resim"];
         $this->slider_durum = htmlspecialchars($_POST['slider_durum'], ENT_QUOTES);
 
@@ -81,7 +81,7 @@ class Slider extends Db
     {
         $this->slider_id = $_GET["slider_id"];
         $this->slider_baslik = htmlspecialchars($_POST['slider_baslik'], ENT_QUOTES);
-        $this->slider_aciklama = htmlspecialchars($_POST['slider_aciklama'], ENT_QUOTES);
+        $this->slider_aciklama = $_POST['slider_aciklama'];
         $this->slider_resim = $_FILES["slider_resim"];
         $this->slider_durum = htmlspecialchars($_POST['slider_durum'], ENT_QUOTES);
 
