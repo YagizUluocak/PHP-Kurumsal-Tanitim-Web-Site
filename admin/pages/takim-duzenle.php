@@ -49,9 +49,12 @@ else
                                         <input type="text" class="form-control" id="takim_gorev" name="takim_gorev" value="<?php echo $veriIdGetir->takim_gorev?>">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="takim_durum" class="form-label"><h6 style="color: black;">Durum</h6></label>
-                                        <input type="text" class="form-control" id="takim_durum" name="takim_durum" value="<?php echo $veriIdGetir->takim_durum?>">
-                                    </div>
+                                            <label for="takim_durum" class="form-label"><h6 style="color: black;">Takım Durumu</h6></label>
+                                            <select class="form-control" name="takim_durum" id="takim_durum">
+                                                <option name="takim_durum" value="1">Göster</option>
+                                                <option name="takim_durum" value="0">Gizle</option>
+                                            </select>
+                                        </div>
                                     <hr />
                                     <div class="mb-3">
                                         <label for="takim_twitter" class="form-label"><h6 style="color: black;">Twitter</h6></label>

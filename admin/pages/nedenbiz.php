@@ -43,7 +43,7 @@ else
                                             <thead>
                                                 <tr>
                                                     <th scope="col" style="width:50px;">#</th>
-                                                    <th scope="col" style="width:250px;">Resim</th>
+                                                    <th scope="col" style="width:130px;">Resim</th>
                                                     <th scope="col">Başlık</th>
                                                     <th scope="col">İçerik</th>
                                                     <th scope="col">Durum</th>           
@@ -60,8 +60,19 @@ else
                                                             <th scope="row"><?php echo $veri->ndn_id?></th>
                                                             <td><img class="img-fluid" src="../../images/nedenbiz/<?php echo $veri->ndn_resim?>" alt=""></td>
                                                             <td><?php echo $veri->ndn_baslik?></td>
-                                                            <td><?php echo $veri->ndn_icerik?></td>
-                                                            <td><?php echo $veri->ndn_durum?></td>
+                                                            <td><?php echo substr($veri->ndn_icerik,0 ,90)?></td>
+                                                            <td>
+                                                            <?php 
+                                                                if($veri->ndn_durum == 1)
+                                                                {
+                                                                    echo "<p style = 'color:green;'>Göster</p>";
+                                                                }
+                                                                else
+                                                                {
+                                                                    echo "<p style = 'color:red;'>Gizli</p>";
+                                                                }
+                                                            ?>
+                                                            </td>
                                                             <td><a href="./nedenbiz-duzenle.php?ndn_id=<?php echo $veri->ndn_id ?>&islem=ndnGuncelle" class="btn btn-warning btn-sm"><i class="fa fa-pen me-2"></i>Düzenle</a></td>
                                                             <td><a href="./nedenbiz.php?ndn_id=<?php echo $veri->ndn_id ?>&islem=ndnSil" class="btn btn-danger btn-sm"><i class="fa fa-trash me-2"></i>Sil</a></td>
                                                         </tr>

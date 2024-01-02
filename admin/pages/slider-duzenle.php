@@ -45,7 +45,7 @@ else
                                             </div>
                                             <div class="mb-3">
                                                 <label for="slider_aciklama" class="form-label"><h6 style="color: black;">Slider Açıklama</h6></label>
-                                                <textarea class="form-control" name="slider_aciklama" id="slider_aciklama"><?php echo $veriIdGetir->slider_aciklama ?></textarea>
+                                                <textarea class="form-control" name="slider_aciklama" id="slider_aciklama" style="min-height: 150px;"><?php echo $veriIdGetir->slider_aciklama ?></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="slider_durum" class="form-label"><h6 style="color: black;">Slider Durumu</h6></label>

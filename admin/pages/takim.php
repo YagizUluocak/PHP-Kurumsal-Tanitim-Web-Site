@@ -43,7 +43,7 @@ else
                                             <thead>
                                                 <tr>
                                                     <th scope="col" style="width:50px;">#</th>
-                                                    <th scope="col" style="width:250px;">Resim</th>
+                                                    <th scope="col" style="width:100px;">Resim</th>
                                                     <th scope="col">İsim</th>
                                                     <th scope="col">Görev</th>
                                                     <th scope="col">Durum</th>
@@ -60,7 +60,18 @@ else
                                                     <td><img class="img-fluid" src="../../images/takim/<?php echo $veri->takim_resim?>" alt=""></td>
                                                     <td><?php echo $veri->takim_isim?></td>
                                                     <td><?php echo $veri->takim_gorev?></td>
-                                                    <td><?php echo $veri->takim_durum?></td>
+                                                    <td>
+                                                    <?php 
+                                                        if($veri->takim_durum == 1)
+                                                        {
+                                                            echo "<p style = 'color:green;'>Göster</p>";
+                                                        }
+                                                        else
+                                                        {
+                                                            echo "<p style = 'color:red;'>Gizli</p>";
+                                                        }
+                                                    ?>
+                                                    </td>
                                                     <td><a href="./takim-duzenle.php?takim_id=<?php echo $veri->takim_id?>&islem=takimguncelle" class="btn btn-warning btn-sm"><i class="fa fa-pen me-2"></i>Düzenle</a></td>
                                                     <td><a href="takim.php?takim_id=<?php echo $veri->takim_id?>&islem=takimsil" class="btn btn-danger btn-sm"><i class="fa fa-trash me-2"></i>Sil</a></td>
                                                 </tr>

@@ -45,7 +45,7 @@ else
                            </div>
                            <div class="mb-3">
                                <label for="slider_aciklama" class="form-label"><h6 style="color: black;">slider_aciklama</h6></label>
-                               <input type="text" class="form-control" id="slider_aciklama" name="slider_aciklama">
+                               <textarea class="form-control" name="slider_aciklama" id="slider_aciklama" style="min-height: 150px;"></textarea>
                            </div>
                            <div class="mb-3">
                                 <label for="slider_durum" class="form-label"><h6 style="color: black;">Slider Durumu</h6></label>

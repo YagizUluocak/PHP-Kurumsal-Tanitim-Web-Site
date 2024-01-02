@@ -35,17 +35,17 @@ else
                                     <h6 class="mb-4">Modül Düzenle</h6>
                 
                                     <form method="POST">
+                                        
                                         <div class="mb-3">
                                                 <label for="modul_ad" class="form-label"> <h6 style="color: black;">Modül Adı</h6></label>
-                                                <input type="text" class="form-control" id="modul_ad" name="modul_ad" value="<?php echo $veriIdGetir->modul_ad?>">
+                                                <input type="text" class="form-control" id="modul_ad" name="modul_ad" value="<?php echo $veriIdGetir->modul_ad?>" readonly>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="modul_sira" class="form-label"><h6 style="color: black;">Modül Sıra</h6></label>
-                                            <input type="text" class="form-control" id="modul_sira" name="modul_sira" value="<?php echo $veriIdGetir->modul_sira?>">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="modul_durum" class="form-label"><h6 style="color: black;">Modül durum</h6></label>
-                                            <input type="text" class="form-control" id="modul_durum" name="modul_durum" value="<?php echo $veriIdGetir->modul_durum?>">
+                                            <label for="modul_durum" class="form-label"><h6 style="color: black;">Takım Durumu</h6></label>
+                                            <select class="form-control" name="modul_durum" id="modul_durum">
+                                                <option name="modul_durum" value="1">Göster</option>
+                                                <option name="modul_durum" value="0">Gizle</option>
+                                            </select>
                                         </div>
 
                                         <button type="submit" class="btn btn-success rounded-pill" name="submit">Güncelle</button>

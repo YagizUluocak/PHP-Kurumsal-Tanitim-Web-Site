@@ -43,11 +43,14 @@ else
                             </div>
                             <div class="mb-3">
                               <label for="ndn_icerik" class="form-label"><h6 style="color: black;">İçerik</h6></label>
-                              <input type="text" class="form-control" id="ndn_icerik" name="ndn_icerik" value="<?php echo$veriIdGetir->ndn_icerik ?>" >
+                              <textarea class="form-control" name="ndn_icerik" id="ndn_icerik" style="min-height: 150px;"><?php echo$veriIdGetir->ndn_icerik ?></textarea>
                             </div>
                             <div class="mb-3">
-                              <label for="ndn_durum" class="form-label"><h6 style="color: black;">Durum</h6></label>
-                              <input type="text" class="form-control" id="ndn_durum" name="ndn_durum" value="<?php echo$veriIdGetir->ndn_durum ?>" >
+                              <label for="ndn_durum" class="form-label"><h6 style="color: black;">Takım Durumu</h6></label>
+                              <select class="form-control" name="ndn_durum" id="ndn_durum">
+                                <option name="ndn_durum" value="1">Göster</option>
+                                <option name="ndn_durum" value="0">Gizle</option>
+                              </select>
                             </div>
                             <button type="submit" class="btn btn-success rounded-pill" name="submit">Güncelle</button>
                     </form>

@@ -43,7 +43,6 @@ else
                                                     <tr>
                                                         <th scope="col" style="width:50px;">#</th>
                                                         <th scope="col">Modül Adı</th>
-                                                        <th scope="col">Modül Sıra</th>
                                                         <th scope="col">Modül Durum</th>
                                                         <th scope="col" style="width:150px;">Düzenle</th>
                                                     </tr>
@@ -55,8 +54,18 @@ else
                                                     <tr class="text-center">
                                                         <th scope="row"><?php echo $veri->modul_id?></th>
                                                         <td><?php echo $veri->modul_ad?></td>
-                                                        <td><?php echo $veri->modul_sira?></td>
-                                                        <td><?php echo $veri->modul_durum?></td>
+                                                        <td>
+                                                            <?php 
+                                                                if($veri->modul_durum == 1)
+                                                                {
+                                                                    echo "<p style = 'color:green;'>Göster</p>";
+                                                                }
+                                                                else
+                                                                {
+                                                                    echo "<p style = 'color:red;'>Gizli</p>";
+                                                                }
+                                                            ?>    
+                                                        </td>
                                                         <td><a href="./modul-duzenle.php?modul_id=<?php echo $veri->modul_id?>&islem=mdlguncelle" class="btn btn-warning btn-sm"><i class="fa fa-pen me-2"></i>Düzenle</a></td>      
                                                     </tr>
                                                 <?php

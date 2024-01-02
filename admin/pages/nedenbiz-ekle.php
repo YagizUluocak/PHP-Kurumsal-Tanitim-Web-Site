@@ -34,7 +34,7 @@ else
               <div class="col-sm-12 col-xl-12">
                 <div class="col">
                   <div class="bg-light rounded p-4" style="height: 100%;">
-                      <h6 class="mb-4">Basic Form</h6>
+                      <h6 class="mb-4">Neden bizi Seçmelisiniz</h6>
                       <form method="POST" enctype="multipart/form-data">
                           <div class="mb-3">
                             <label for="ndn_resim" class="form-label"> <h6 style="color: black;">Resim</h6></label>
@@ -45,12 +45,15 @@ else
                             <input type="text" class="form-control" id="ndn_baslik" name="ndn_baslik">
                           </div>
                           <div class="mb-3">
-                            <label for="ndn_icerik" class="form-label"><h6 style="color: black;">İçerik</h6></label>
-                            <input type="text" class="form-control" id="ndn_icerik" name="ndn_icerik">
+                              <label for="ndn_icerik" class="form-label"><h6 style="color: black;">İçerik</h6></label>
+                              <textarea class="form-control" name="ndn_icerik" id="ndn_icerik" style="min-height: 150px;"></textarea>
                           </div>
                           <div class="mb-3">
-                            <label for="ndn_durum" class="form-label"><h6 style="color: black;">Durum</h6></label>
-                            <input type="text" class="form-control" id="ndn_durum" name="ndn_durum">
+                            <label for="ndn_durum" class="form-label"><h6 style="color: black;">Takım Durumu</h6></label>
+                            <select class="form-control" name="ndn_durum" id="ndn_durum">
+                              <option name="ndn_durum" value="1">Göster</option>
+                              <option name="ndn_durum" value="0">Gizle</option>
+                            </select>
                           </div>
                           <button type="submit" class="btn btn-success rounded-pill" name="submit">Kaydet</button>
                       </form>

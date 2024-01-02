@@ -45,7 +45,8 @@ else
                                             </div>
                                             <div class="mb-3">
                                                 <label for="servis_aciklama" class="form-label"><h6 style="color: black;">Servis Açıklama</h6></label>
-                                                <input type="text" class="form-control" id="servis_aciklama" name="servis_aciklama">
+                                                <textarea class="form-control" name="servis_aciklama" id="servis_aciklama" style="min-height: 150px;"></textarea>
+
                                             </div>
                                             <div class="mb-3">
                                                 <label for="servis_durum" class="form-label"><h6 style="color: black;">Servis Durumu</h6></label>

@@ -29,7 +29,6 @@
 
                 <div class="navbar-nav w-100">
                     <a href="../pages/index.php" class="nav-item nav-link"><i class="fa-solid fa-house me-2"></i>Ana Sayfa</a>
-                    <a href="../pages/menu.php" class="nav-item nav-link"><i class="fa-solid fa-bars me-2"></i>Menüler</a>
                     <a href="../pages/hakkimizda.php" class="nav-item nav-link"><i class="fa-regular fa-address-card me-2"></i>Hakkımzda</a>
 
                     <div class="nav-item dropdown">
@@ -37,7 +36,6 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="ayar-genel.php" class="dropdown-item"><i class="fa-solid fa-gear me-2"></i>Genel Ayarlar</a>
                             <a href="modul.php" class="dropdown-item"><i class="fa-solid fa-sort me-2"></i>Modül Ayarları</a>
-                            <a href="ayar-genel.php" class="dropdown-item"><i class="fa fa-tachometer-alt me-2"></i>Limit Ayarları</a>
                             <a href="ayar-sosyal.php" class="dropdown-item"><i class="fa-solid fa-hashtag me-2"></i>Sosyal Medya Ayarları</a>
                             <a href="../pages/text.php" class="dropdown-item"><i class="fa-solid fa-globe me-2"></i>Dil Ayarları</a>
                         </div>

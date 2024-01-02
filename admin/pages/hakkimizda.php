@@ -34,7 +34,7 @@ else
                     
                                         <form method="POST" enctype="multipart/form-data">
                                             <div class="mb-3">
-                                                <img class="img-fluid mb-3" style="width: 200px; display:block;" src="../../images/slider/<?php echo $veriIdGetir->hakkimizda_resim?>" alt="">
+                                                <img class="img-fluid mb-3" style="width: 200px; display:block;" src="../../images/hakkimizda/<?php echo $veriIdGetir->hakkimizda_resim?>" alt="">
                                                 <label for="hakkimizda_resim" class="form-label "><h6 style="color: black; ">Hakkımızda Resim</h6></label>
                                                 <input type="file" class="form-control" id="hakkimizda_resim" name="hakkimizda_resim">
                                             </div>
@@ -44,7 +44,7 @@ else
                                             </div>
                                             <div class="mb-3">
                                                 <label for="hakkimizda_icerik" class="form-label"><h6 style="color: black;">Hakkımızda İçerik</h6></label>
-                                                <textarea class="form-control" name="hakkimizda_icerik" id="hakkimizda_icerik"><?php echo $veriIdGetir->hakkimizda_icerik ?></textarea>
+                                                <textarea class="form-control" name="hakkimizda_icerik" id="hakkimizda_icerik" style="min-height: 280px;"><?php echo $veriIdGetir->hakkimizda_icerik ?></textarea>
                                             </div>
                                                 <button type="submit" class="btn btn-success rounded-pill" name="submit">Kaydet</button>
                                         </form>
