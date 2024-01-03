@@ -10,11 +10,11 @@ Hakkımızda işlemleri
 
 Ayarlar
 
-  genel ayarlar : Bu alanda sitenin logo, favicon, iletişim adres gibi işlemleri yapılabilmekte.
+  -genel ayarlar : Bu alanda sitenin logo, favicon, iletişim adres gibi işlemleri yapılabilmekte.
   
-  modül ayarları : modül alanı sitenin istediğimiz alanı gösterip gizleyebilme seçeneklerini ayarlayabildiğimiz alan.
+  -modül ayarları : modül alanı sitenin istediğimiz alanı gösterip gizleyebilme seçeneklerini ayarlayabildiğimiz alan.
   
-  sosyal medya ayarları : Sitenin soyal medya hesaplarını tanımladığımız alan.
+  -sosyal medya ayarları : Sitenin soyal medya hesaplarını tanımladığımız alan.
   
 Servisler
 
