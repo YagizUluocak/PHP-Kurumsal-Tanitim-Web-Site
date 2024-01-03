@@ -15,10 +15,15 @@ Ayarlar
   sosyal medya ayarları : Sitenin soyal medya hesaplarını tanımladığımız alan.
   
 Servisler
+
 Slider
+
 Takım
+
 Neden Biz
+
 Yöneticiler
+
 
 alanları mevcuttur.
 
